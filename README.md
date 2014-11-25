@@ -14,6 +14,7 @@ We'll need a script where we will start converting the OCR transcript into the f
 
 ### Final Transcripts - ToDo
 http://ferguson.sayit.mysociety.org/
+A random example of SayIt to see what we are aiming for - http://leveson.sayit.mysociety.org/hearing-14-may-2012/lord-augustine-odonnell
 
 
 ## Conversion Steps
@@ -24,3 +25,6 @@ http://ferguson.sayit.mysociety.org/
 5. Format all the people involved and sections of the transcript.
 6. Upload to SayIt
 7. Promote to the media
+
+### Twitter Discussion
+https://twitter.com/steiny/status/537297171255943168
