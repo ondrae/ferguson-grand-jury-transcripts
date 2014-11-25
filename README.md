@@ -1,7 +1,7 @@
 ferguson-grand-jury-transcripts
 ===============================
 
-Converting the Ferguson Grand Jury transcripts into something more readable.
+Converting the Ferguson Grand Jury transcripts into something more readable. We want to display them on the [SayIt](http://sayit.mysociety.org/) service by [MySociety](https://www.mysociety.org/). Court transcripts [look very nice](http://leveson.sayit.mysociety.org/hearing-14-may-2012/lord-augustine-odonnell) on  SayIt.
 
 ### Raw Transcripts
 http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-testimony.pdf
@@ -14,7 +14,6 @@ We'll need a script where we will start converting the OCR transcript into the f
 
 ### Final Transcripts - ToDo
 http://ferguson.sayit.mysociety.org/
-A random example of SayIt to see what we are aiming for - http://leveson.sayit.mysociety.org/hearing-14-may-2012/lord-augustine-odonnell
 
 
 ## Conversion Steps
