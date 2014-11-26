@@ -9,6 +9,11 @@ http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-
 ### OCR Transcripts
 https://www.dropbox.com/s/67unqhdrb8jhgr0/Ferguson%20Grand%20Jury%20Testimony.pdf?dl=0
 
+### Sample Files
+First ten pages of the OCR transcript are at `files/sample.pdf`
+When run through pdf2txt though, text is all out of order. See `files/sample.txt`
+
+
 ### Transform Scripts - ToDo
 We'll need a script where we will start converting the OCR transcript into the format needed to cleanly display them.
 
