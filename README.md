@@ -18,11 +18,14 @@ https://www.dropbox.com/s/67unqhdrb8jhgr0/Ferguson%20Grand%20Jury%20Testimony.pd
 
 ### Converted to text
 https://docs.google.com/uc?id=0ByV6qGuufDXDZGdtVl90aU1YV0E&export=download
+
 The original PDF has three slightly different formats and we produced a different text file for each format. There's also one single file that has the entire contents of the document.
 
-Two sets of files included; one with page numbers (extracted from the document) and one without. The page numbers might be useful if we need to refer back to the original document for any reason, and they're easy to skip when parsing if not.
+Two sets of files are included; one with page numbers (extracted from the document) and one without. The page numbers might be useful for parsing or if we need to refer back to the original document, and they're easy to skip if not.
 
-The page numbers for the last set of pages (4654-4799) are in a different format than the others; they're all prefixed with 'GorePerry Reporting & Video...'
+The page numbers for the last set of pages (4654-4799) are in a different format than the others; they're all at the bottom of the page instead of the top, and prefixed with 'GorePerry Reporting & Video...'
+
+The text was extracted from the OCR Transcripts using [Cogniview PDF2XL](https://www.cogniview.com/pdf-to-excel).
 
 ### Sample Files
 10 sample pages of the PDF are at `files/sample.pdf`
