@@ -11,11 +11,12 @@ https://www.dropbox.com/s/67unqhdrb8jhgr0/Ferguson%20Grand%20Jury%20Testimony.pd
 
 ### Sample Files
 First ten pages of the OCR transcript are at `files/sample.pdf`
-When run through pdf2txt though, text is all out of order. See `files/sample.txt`
 
+### Required Libraries
+I started with pdfminer, but it attempts to maintain the layout of the PDF. We don't want that. Doing much better with [Slate](https://pypi.python.org/pypi/slate). It apparently depends on an old version of pdfminer though, so I had to install it like `sudo pip install --upgrade --ignore-installed slate==0.3 pdfminer==20110515` which I found [here](https://github.com/timClicks/slate/issues/5#issuecomment-53450633).
 
-### Transform Scripts - ToDo
-We'll need a script where we will start converting the OCR transcript into the format needed to cleanly display them.
+### Transform Scripts
+Starting at `convert.py`
 
 ### Final Transcripts - ToDo
 http://ferguson.sayit.mysociety.org/
