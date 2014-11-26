@@ -16,6 +16,9 @@ http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-
 ### OCR Transcripts
 https://www.dropbox.com/s/67unqhdrb8jhgr0/Ferguson%20Grand%20Jury%20Testimony.pdf?dl=0
 
+### Document Cloud
+St. Louis Public Radio has [run all the eveidence](http://apps.stlpublicradio.org/ferguson-project/evidence.html) through a service called [Document Cloud](http://www.documentcloud.org/documents/1370490-grand-jury-volume-1.html) which does all kinds of useful stuff. They have [an API](http://www.documentcloud.org/api/documents/1370490-grand-jury-volume-1.json) links for all the [converted text](https://s3.amazonaws.com/s3.documentcloud.org/documents/1370490/grand-jury-volume-1.txt) or text [broken out by page](http://www.documentcloud.org/documents/1370490/pages/grand-jury-volume-1-p1.txt).
+
 ### Converted to text
 https://docs.google.com/uc?id=0ByV6qGuufDXDZGdtVl90aU1YV0E&export=download
 
