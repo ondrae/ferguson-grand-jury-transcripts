@@ -3,6 +3,14 @@ ferguson-grand-jury-transcripts
 
 Converting the Ferguson Grand Jury transcripts into something more readable. We want to display them on the [SayIt](http://sayit.mysociety.org/) service by [MySociety](https://www.mysociety.org/). Court transcripts [look very nice](http://leveson.sayit.mysociety.org/hearing-14-may-2012/lord-augustine-odonnell) on  SayIt.
 
+### Tasks
+- [ ] Download the OCR transcripts
+- [ ] Convert the PDF to a clean text file
+- [ ] Write script to convert the text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
+- [ ] Upload to SayIt
+- [ ] Polish
+- [ ] Promote to media and activists
+
 ### Raw Transcripts
 http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-testimony.pdf
 
@@ -17,23 +25,15 @@ Two sets of files included; one with page numbers (extracted from the document) 
 
 The page numbers for the last set of pages (4654-4799) are in a different format than the others; they're all prefixed with 'GorePerry Reporting & Video...'
 
+### Sample Files
+10 sample pages of the PDF are at `files/sample.pdf`
+The same 10 pages of converted text are at `files/sample.txt`
 
 ### Final Transcripts - Work in progress
 http://ferguson.sayit.mysociety.org/
-
-
-## Conversion Steps
-1. Download the OCR transcripts
-2. Choose a PDF to text converter
-3. Convert the text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
-4. Format all the people involved and sections of the transcript.
-5. Upload to SayIt
-6. Promote to the media
 
 ### Twitter Discussion
 https://twitter.com/steiny/status/537297171255943168
 
 ### Initial attempts
 I started with pdfminer, but it attempts to maintain the layout of the PDF. We don't want that. Doing much better with [Slate](https://pypi.python.org/pypi/slate). It apparently depends on an old version of pdfminer though, so I had to install it like `sudo pip install --upgrade --ignore-installed slate==0.3 pdfminer==20110515` which I found [here](https://github.com/timClicks/slate/issues/5#issuecomment-53450633).
-
-We ended up using a different tool though.
