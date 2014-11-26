@@ -11,6 +11,7 @@ https://www.dropbox.com/s/67unqhdrb8jhgr0/Ferguson%20Grand%20Jury%20Testimony.pd
 
 ### Sample Files
 First ten pages of the OCR transcript are at `files/sample.pdf`
+Current output of `convert.py` is at `files/sample.txt
 
 ### Required Libraries
 I started with pdfminer, but it attempts to maintain the layout of the PDF. We don't want that. Doing much better with [Slate](https://pypi.python.org/pypi/slate). It apparently depends on an old version of pdfminer though, so I had to install it like `sudo pip install --upgrade --ignore-installed slate==0.3 pdfminer==20110515` which I found [here](https://github.com/timClicks/slate/issues/5#issuecomment-53450633).
@@ -24,7 +25,7 @@ http://ferguson.sayit.mysociety.org/
 
 ## Conversion Steps
 1. Download the OCR transcripts
-2. Choose a PDF to text converter - I'm starting with pdfminer
+2. Choose a PDF to text converter - I'm starting with slate
 3. Convert the text to XML
 4. Convert the XML to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
 5. Format all the people involved and sections of the transcript.
