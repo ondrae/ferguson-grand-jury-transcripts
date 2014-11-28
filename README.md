@@ -5,19 +5,30 @@ Converting the Ferguson Grand Jury transcripts into something more readable. We 
 
 ### Tasks
 - [x] Download the OCR transcripts
-- [x] Convert the PDF to a clean text file
-- [x] Write script to convert the text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
+- [x] Use `pdf2txt.py` to convert PDF to XML
+- [x] Use `parse_transcript_xml.py` to convert XML to formatted txt
+- [ ] Rewrite `txt2an.py` script to convert the new formatted text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
 - [ ] Upload to SayIt
 - [ ] Promote to media and activists
 
 ### Transform Script
-The first working version of a transform script is at `txt2an.py` meaning it transforms from text to Akoma Ntoso.
+We're rewriting the `txt2an.py` script to take in the new formatted text file which is at `files/pdfminer/output/ferguson_grand_jury_testimony.txt`.
 
-After lots of trial and error, this script is expecting a text file for each VOLUME of the transcripts. I took the text files from @tmaybe below and split them into separate files for each volume. See `files/VOLUME I.txt` as an example. In each text file I cleared away the cover page text and just left the name of the volume.  
+The old version used to transform text to Akoma Ntoso, but it didn't handle redacted names or the Q&A sections very well. It was expecting a seperate text file for each VOLUME.
 
 In the Q&A sections of the transcripts, I've left the Answerer's name as A, because it is often redacted. We can go fix it for certain volumes if needed like the section in Volume IV.
 
 There will be some hand polsihing afterwards for sure, but this is a good start.
+
+- [ ] Create separate debate sections for each VOLUME such as 
+```
+<debateSection>
+    <heading>VOLUME I</heading>
+    ...
+</debateSection>
+```
+- [ ] Better handling for redacted names
+- [ ] Fine tuning of the Q&A formatting
 
 
 
@@ -43,15 +54,8 @@ The page numbers for the last set of pages (4654-4799) are in a different format
 
 The text was extracted from the OCR Transcripts using [Cogniview PDF2XL](https://www.cogniview.com/pdf-to-excel).
 
-### Sample Files
-10 sample pages of the PDF are at `files/sample.pdf`
-The same 10 pages of converted text are at `files/sample.txt`
-
 ### Final Transcripts - Work in progress
 http://ferguson.sayit.mysociety.org/
 
 ### Twitter Discussion
 https://twitter.com/steiny/status/537297171255943168
-
-### Initial attempts
-I started with pdfminer, but it attempts to maintain the layout of the PDF. We don't want that. Doing much better with [Slate](https://pypi.python.org/pypi/slate). It apparently depends on an old version of pdfminer though, so I had to install it like `sudo pip install --upgrade --ignore-installed slate==0.3 pdfminer==20110515` which I found [here](https://github.com/timClicks/slate/issues/5#issuecomment-53450633).
