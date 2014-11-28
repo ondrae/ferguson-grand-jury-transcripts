@@ -19,8 +19,13 @@ with open('files/VOLUME III.txt') as text:
         # Look for peoples names
         already_found = False
         name = re.search("([A-Z]{2,}\.* [A-Z]{4,})", line)
+        qna = re.search("([QA]) ", line)
         if name:
           showAs = name.group(1)
+        if qna:
+          showAs = qna.group(1)
+
+        if name or qna:
 
           # Check that the person isn't in yet.
           for child in references:
@@ -33,6 +38,7 @@ with open('files/VOLUME III.txt') as text:
           id = showAs.lower().replace(".","").replace(" ","-")
           attr = {
             "href" : "/ontology/person/ferguson.sayit.mysociety.org/" + id,
+            "id" : id,
             "showAs" : showAs
           }
           TLCPerson = xml.SubElement(references, "TLCPerson", attr)

@@ -2,9 +2,11 @@
   <debate>
     <meta>
       <references>
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/grand-jury" showAs="GRAND JURY" />
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-alizadeh" showAs="MS. ALIZADEH" />
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-whirley" showAs="MS. WHIRLEY" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/grand-jury" id="grand-jury" showAs="GRAND JURY" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-alizadeh" id="ms-alizadeh" showAs="MS. ALIZADEH" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-whirley" id="ms-whirley" showAs="MS. WHIRLEY" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/q" id="q" showAs="Q" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/a" id="a" showAs="A" />
       </references>
     </meta>
     <debateBody>

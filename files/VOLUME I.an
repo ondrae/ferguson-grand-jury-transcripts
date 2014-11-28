@@ -2,10 +2,12 @@
   <debate>
     <meta>
       <references>
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/mr-mcculloch" showAs="MR. MCCULLOCH" />
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-alizadeh" showAs="MS. ALIZADEH" />
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-whirley" showAs="MS. WHIRLEY" />
-        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/the-witness" showAs="THE WITNESS" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/mr-mcculloch" id="mr-mcculloch" showAs="MR. MCCULLOCH" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/a" id="a" showAs="A" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-alizadeh" id="ms-alizadeh" showAs="MS. ALIZADEH" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/ms-whirley" id="ms-whirley" showAs="MS. WHIRLEY" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/the-witness" id="the-witness" showAs="THE WITNESS" />
+        <TLCPerson href="/ontology/person/ferguson.sayit.mysociety.org/q" id="q" showAs="Q" />
       </references>
     </meta>
     <debateBody>
