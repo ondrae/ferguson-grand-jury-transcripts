@@ -6,9 +6,20 @@ Converting the Ferguson Grand Jury transcripts into something more readable. We 
 ### Tasks
 - [x] Download the OCR transcripts
 - [x] Convert the PDF to a clean text file
-- [ ] Write script to convert the text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
+- [x] Write script to convert the text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
 - [ ] Upload to SayIt
 - [ ] Promote to media and activists
+
+### Transform Script
+The first working version of a transform script is at `txt2an.py` meaning it transforms from text to Akoma Ntoso.
+
+After lots of trial and error, this script is expecting a text file for each VOLUME of the transcripts. I took the text files from @tmaybe below and split them into separate files for each volume. See `files/VOLUME I.txt` as an example. In each text file I cleared away the cover page text and just left the name of the volume.  
+
+In the Q&A sections of the transcripts, I've left the Answerer's name as A, because it is often redacted. We can go fix it for certain volumes if needed like the section in Volume IV.
+
+There will be some hand polsihing afterwards for sure, but this is a good start.
+
+
 
 ### Raw Transcripts
 http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-testimony.pdf
@@ -21,6 +32,8 @@ St. Louis Public Radio has [run all the eveidence](http://apps.stlpublicradio.or
 
 ### Converted to text
 https://docs.google.com/uc?id=0ByV6qGuufDXDZGdtVl90aU1YV0E&export=download
+
+by @tmaybe
 
 The original PDF has three slightly different formats and we produced a different text file for each format. There's also one single file that has the entire contents of the document.
 
