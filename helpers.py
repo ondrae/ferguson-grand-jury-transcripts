@@ -13,3 +13,11 @@ def indent(elem, level=0):
   else:
       if level and (not elem.tail or not elem.tail.strip()):
           elem.tail = i
+
+def remove_dupes(speeches):
+  ''' get rid of duplicate dicts '''
+  out = []
+  for speech in speeches:
+     if speech not in out:
+         out.append(speech)
+  return out

@@ -46,7 +46,6 @@ if __name__ == "__main__":
     volume.get_speakers()
     volume.get_speeches()
     volume.indent()
-    break
 
   # Tests
   for volume in volumes:
@@ -58,10 +57,3 @@ if __name__ == "__main__":
     with open(volume.heading.text+".an", "w") as out:
       xml_string = xml.tostring(volume.akoma_ntoso)
       out.writelines(xml_string)
-    break
-    
-    # for child in volume.references:
-    #   print child.attrib["showAs"]
-
-    # print volume.full_text
-    # break
