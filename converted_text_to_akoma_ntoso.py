@@ -48,7 +48,7 @@ if __name__ == "__main__":
     volume.fix_indented_qna_speeches()
     volume.remove_pos()
     volume.build_speeches()
-    volume.indent()
+    volume.indent(volume.akoma_ntoso)
 
   # Tests
   for volume in volumes:
