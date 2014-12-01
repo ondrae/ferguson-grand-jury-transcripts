@@ -45,6 +45,9 @@ if __name__ == "__main__":
     volume.remove_cover_pages()
     volume.get_speakers()
     volume.get_speeches()
+    volume.fix_indented_qna_speeches()
+    volume.remove_pos()
+    volume.build_speeches()
     volume.indent()
 
   # Tests
@@ -54,6 +57,6 @@ if __name__ == "__main__":
 
   # printout files
   for volume in volumes:
-    with open(volume.heading.text+".an", "w") as out:
+    with open("files/akoma_ntoso/"+volume.heading.text+".xml", "w") as out:
       xml_string = xml.tostring(volume.akoma_ntoso)
       out.writelines(xml_string)

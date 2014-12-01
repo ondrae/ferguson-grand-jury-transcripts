@@ -1,5 +1,5 @@
 from xml.etree import ElementTree as xml
-import re, helpers
+import re, helpers, copy
 
 class Volume():
   ''' each volume gets its own Akoma Ntoso file '''
@@ -12,7 +12,6 @@ class Volume():
     self.references = xml.SubElement(self.meta, "references")
     self.debateBody = xml.SubElement(self.debate, "debateBody")
     self.full_text = []
-    self.full_text_details = []
 
   def debateSection(self, heading):
     ''' properly label the section '''
@@ -45,7 +44,7 @@ class Volume():
      
       # Look for peoples names
       already_found = False
-      name = re.search("(M[RS]\.* [A-Z]+)", line["text"])
+      name = re.search("(M[RS]\.* [A-Z]+):", line["text"])
       qna = re.search("([QA]) ", line["text"])
       if name:
         showAs = name.group(1)
@@ -73,20 +72,17 @@ class Volume():
     ''' Find all the sections and speeches '''
     print "Getting speeches"
 
-    def get_list_of_speeches():
-      ''' build the first list of speeches '''
-      
-      # Look for a speakers name. Start recording the rest of that line
-      # record all other lines until another name is found.
-      speeches = []
-      speech = {
-        "speech" : []
-      }
-
-      for line in self.full_text:
+    # Look for a speakers name. Start recording the rest of that line
+    # record all other lines until another name is found.
+    speeches = []
+    speech = {
+      "speech" : []
+    }
+    for line in self.full_text:
 
         # clean up
         line["text"] = line["text"].replace("(at new indentation)", "")
+        line["text"] = line["text"].strip()
 
         # Look for speakers names
         name = re.search("(M[RS]\.* [A-Z]+):(.*)", line["text"])
@@ -104,17 +100,6 @@ class Volume():
           }
           speeches.append(speech)
 
-        # elif narrative:
-        #   speech = {
-        #     "speaker" : "narrative",
-        #     "speech" : [ {
-        #       "text" : narrative.group(1), 
-        #       "pos" : line["pos"]
-        #     }]
-        #   }
-        #   print speech
-        #   speeches.append(speech)
-
         elif qna:
           speech = {
             "speaker" : qna.group(1),
@@ -129,60 +114,53 @@ class Volume():
           # Add line to current speech
           speech['speech'].append(line)
 
-      return speeches
-
-    def add_indented_q_speeches(speeches):
-      ''' some q speeches are found by a large indent
-          use the pos to find these and insert them
-          return a list of speeches with no pos
-      '''
-      # different formats for different Q&A sections
-      rebuilt_speeches = []
-      for speech in speeches:
-        if speech["speaker"] == "A":
-          for paragraph in speech["speech"]:
-            if paragraph["pos"]:
-              # 300 is for big indents
-              if int(paragraph["pos"][0:3]) > 300:
-                new_speech = {
-                  "speaker" : "Q",
-                  "speech" : [ paragraph["text"] ]
-                }
-                rebuilt_speeches.append(new_speech)
-              else:
-                new_speech = {
-                  "speaker" : speech["speaker"],
-                  "speech" : [ ]
-                }
-                for paragraph in speech["speech"]:
-                  new_speech["speech"].append(paragraph["text"])
-                rebuilt_speeches.append(new_speech)
-        else:
-          new_speech = {
-            "speaker" : speech["speaker"],
-            "speech" : [ ]
-          }
-          for paragraph in speech["speech"]:
-            new_speech["speech"].append(paragraph["text"])
-          rebuilt_speeches.append(new_speech)
-
-      return rebuilt_speeches
+    self.speeches = speeches
 
 
-    def build_speeches(speeches):
-      ''' build speech xml elements '''
-      for speech in speeches:
-        attr = {
-          "by" : "#" + speech["speaker"].lower().replace(" ","-").replace(".","")
-        }
-        self.speech = xml.SubElement(self.debateSection, "speech", attr)
-        self.add_paragraphs(self.speech, speech)
+  def fix_indented_qna_speeches(self):
+    ''' some q speeches are found by a large indent
+        use the pos to find these
+    '''
+    for i, speech in enumerate(self.speeches):
+      where_to_insert = False
+      if speech["speaker"] == "A":
+        for paragraph in speech["speech"]:
+          if where_to_insert:
+              self.speeches[where_to_insert]["speech"].append(paragraph)
+          if paragraph["pos"]:
+            # 300 is for big indents
+            if int(paragraph["pos"][0:3]) > 300:
+              where_to_insert = i + 1 # Insert after this
+              new_speech = {
+                "speaker" : "Q",
+                "speech" : [ paragraph ]
+              }
+              self.speeches.insert(where_to_insert, new_speech)
+            
+      if where_to_insert:
+        # remove the fixed line from the answer
+        speech_copy = copy.copy(self.speeches[i]["speech"])
+        for paragraph in self.speeches[i]["speech"]:
+          if paragraph in self.speeches[i+1]["speech"]:
+            speech_copy.remove(paragraph)
+        self.speeches[i]["speech"] = speech_copy
 
-    speeches = get_list_of_speeches()
-    speeches = add_indented_q_speeches(speeches)
-    speeches = helpers.remove_dupes(speeches)
-    build_speeches(speeches)
+  def remove_pos(self):
+    ''' only needed pos for the qna formatting'''
+    for speech in self.speeches:
+      text = []
+      for paragraph in speech["speech"]:
+        text.append(paragraph["text"])
+      speech["speech"] = text
 
+  def build_speeches(self):
+    ''' build speech xml elements '''
+    for speech in self.speeches:
+      attr = {
+        "by" : "#" + speech["speaker"].lower().replace(" ","-").replace(".","")
+      }
+      self.speech = xml.SubElement(self.debateSection, "speech", attr)
+      self.add_paragraphs(self.speech, speech)
 
   def add_paragraphs(self, elem, speech):
     ''' build paragraphs '''
@@ -194,7 +172,6 @@ class Volume():
         if paragraph:
           p = xml.SubElement(elem, "p")
           p.text = paragraph
-
 
   def indent(self):
     helpers.indent(self.akoma_ntoso)
