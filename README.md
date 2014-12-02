@@ -3,6 +3,9 @@ ferguson-grand-jury-transcripts
 
 We have converted the 5000 page Ferguson Grand Jury transcript PDF into [something more readable](http://ferguson.sayit.mysociety.org/). This conversion makes the transcript searchable and linkable. We hope these features add to the national discussion about institutional racism and police brutality. We're using the [SayIt](http://sayit.mysociety.org/) service by [MySociety](https://www.mysociety.org/). 
 
+### Conversion
+The Ferguson Grand Just testimony PDF is 5000 pages long. It was transcribed over 100 days by different people, so the formatting is all over the place. There is also a lot of redacted content. We've done the best we can to get these transcripts up and live. Done is better than perfect. Compare anything that looks weird to the official released PDF.
+
 ### How You Can Help
 * Share with your local media
 * Find and share the most important parts of the transcripts.
@@ -15,10 +18,7 @@ We have converted the 5000 page Ferguson Grand Jury transcript PDF into [somethi
 - [x] Use `parse_transcript_xml.py` to convert XML to formatted txt
 - [x] Use `converted_text_to_akoma_ntoso.py` script to convert the new formatted text to [Akoma Ntoso](http://sayit.mysociety.org/about/developers#an)
 - [x] Upload to SayIt
-- [ ] Promote to media and activists
-
-### Conversion
-The Ferguson Grand Just testimony PDF is 5000 pages long. It was transcribed over 100 days by different people, so the formatting is all over the place. There is also a lot of redacted content. We've done the best we can to get these transcripts up and live. Done is better than perfect. Compare anything that looks weird to the official released PDF.
+- [x] Promote to media and activists
 
 ### Raw Transcripts
 http://graphics8.nytimes.com/newsgraphics/2014/11/24/ferguson-assets/grand-jury-testimony.pdf
