@@ -10,7 +10,7 @@ def fix_ocr_errors_in_line(line_in):
 	# fix rna' am = ma'am
 	fixed = re.sub('rna\' am', 'ma\'am', fixed)
 	# fix IS = 's
-	fixed = re.sub(r'\bIS\b', 'is', fixed)
+	fixed = re.sub(r'\bIS\b', '\'s', fixed)
 	# fix 1s = is and 1n = in
 	fixed = re.sub(r'\b1s\b', r'is', fixed)
 	fixed = re.sub(r'\b1n\b', r'in', fixed)
