@@ -4,6 +4,8 @@ ferguson-grand-jury-transcripts
 We have converted the 5000 page Ferguson Grand Jury transcript PDF into [something more readable](http://ferguson.sayit.mysociety.org/). This conversion makes the transcript searchable and linkable. We hope these features add to the national discussion about institutional racism and police brutality. We're using the [SayIt](http://sayit.mysociety.org/) service by [MySociety](https://www.mysociety.org/). 
 
 ### How You Can Help
+* Share with your local media
+* Find and share the most important parts of the transcripts.
 * Review the transcripts and write down [any issues](https://github.com/ondrae/ferguson-grand-jury-transcripts/issues).
 * Improve our converter by writing code to [fixing issues](https://github.com/ondrae/ferguson-grand-jury-transcripts/issues) 
 
