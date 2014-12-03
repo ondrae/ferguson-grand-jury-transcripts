@@ -182,11 +182,11 @@ def parseXML(xml_in):
 	last_line_left = 0.0
 	last_paragraph_left = 0.0
 	for line in all_lines:
-		# check for a name
-		name_match = re.search(r'(M[RS]\. [A-Z]+):', line['text'])
+		# check for a name (name_match.group(1) will contain the name if there's a match)
+		name_match = re.match(r'(?:BY )?(M[RS]\. [A-Z]{2,}|M[RS]\.|THE WITNESS|THE FBI|THE COURT|GRAND JUROR|WITNESS 10|DETECTIVE|CHIEF):?', line['text'])
 
-		# check for Q/A (will give false positive for lines of text starting with 'A ...' that aren't answers)
-		qa_match = re.match(r'[QA] ', line['text'])
+		# check for Q/A or QUESTION: (will give false positive for lines of text starting with 'A ...' that aren't answers)
+		qa_match = re.match(r'[QA] |QUESTION:', line['text'])
 
 		# check for an open parens
 		parens_match = re.match(r'\(', line['text'])
