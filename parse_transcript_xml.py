@@ -3,6 +3,52 @@ import re
 import sys
 import xml.etree.cElementTree as ET
 
+def fix_ocr_errors_in_line(line_in):
+	fixed = line_in
+	# fix Urn = Um
+	fixed = re.sub(r'\b([Uu])rn\b', r'\1m', fixed)
+	# fix rna' am = ma'am
+	fixed = re.sub('rna\' am', 'ma\'am', fixed)
+	# fix IS = 's
+	fixed = re.sub(r'\bIS\b', '\'s', fixed)
+	# fix 1s = is and 1n = in
+	fixed = re.sub(r'\b1s\b', r'is', fixed)
+	fixed = re.sub(r'\b1n\b', r'in', fixed)
+
+	# fix other i = 1 variations
+	fixed = re.sub('1ng', 'ing', fixed)
+	fixed = re.sub('r1e', 'rie', fixed)
+	fixed = re.sub('p1e', 'pie', fixed)
+	fixed = re.sub('r1m', 'rim', fixed)
+	fixed = re.sub('r1o', 'rio', fixed)
+	fixed = re.sub('g1v', 'giv', fixed)
+	fixed = re.sub('exam1n', 'examin', fixed)
+	fixed = re.sub('aga1n', 'again', fixed)
+	fixed = re.sub('excess1ve', 'excessive', fixed)
+	fixed = re.sub('1gnore', 'ignore', fixed)
+	fixed = re.sub('1mage', 'image', fixed)	
+	fixed = re.sub('1ssue', 'issue', fixed)
+	fixed = re.sub('magaz1ne', 'magazine', fixed)
+	fixed = re.sub('mus1c', 'music', fixed)
+	fixed = re.sub('n1ne', 'nine', fixed)
+	fixed = re.sub('occas1on', 'occasion', fixed)
+	fixed = re.sub('op1n1on', 'opinion', fixed)
+	fixed = re.sub('se1ze', 'seize', fixed)
+	fixed = re.sub('s1gn', 'sign', fixed)
+	fixed = re.sub('s1nce', 'since', fixed)
+	fixed = re.sub('s1r', 'sir', fixed)
+	fixed = re.sub('s1x', 'six', fixed)
+	fixed = re.sub('s1ze', 'size', fixed)
+	fixed = re.sub('superv1sor', 'supervisor', fixed)
+	fixed = re.sub('v1ce', 'vice', fixed)
+
+	# fix some one-offs
+	fixed = re.sub('Sox-rays', 'So x-rays', fixed)
+	fixed = re.sub('pun ked', 'punked', fixed)
+	fixed = re.sub(ur' \u2022', '', fixed)
+
+	return fixed
+
 def parseXML(xml_in):
 	'''
 	parse the document XML
@@ -88,6 +134,8 @@ def parseXML(xml_in):
 
 			# strip edge & multiple spaces
 			line_text = re.sub(' +', ' ', line_text.strip())
+			# fix OCR errors
+			line_text = fix_ocr_errors_in_line(line_text)
 			# ignore page numbers
 			if not CAPTURE_ALL_TEXT:
 				if re.match('Page', line_text):
@@ -165,4 +213,4 @@ def parseXML(xml_in):
 
 if __name__ == "__main__":
 	# :NOTE: if parsing sample.xml, set PAGE_OFFSET above to 500
-	parseXML("input/ferguson_grand_jury_testimony.xml")
+	parseXML("files/ferguson_grand_jury_testimony.xml")
